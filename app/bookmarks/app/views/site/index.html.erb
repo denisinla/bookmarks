@@ -1,0 +1,25 @@
+<% if current_user %>
+  <h2>Latest Bookmarks</h2>
+  <table style="width: 100%">
+    <thead>
+      <tr>
+        <th>Url</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @bookmarks.each do |bookmark| %>
+        <tr>
+          <td><%= link_to bookmark.title, bookmark.url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <div class="panel">
+    <h1>Share your bookmarks!</h1>
+    <p>A simple app to track and share your beloved bookmarks with others.</p>
+    <%= link_to "Get started today", new_user_registration_path, :class => "button button-large" %>
+  </div>
+<% end %>
